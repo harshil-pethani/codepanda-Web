@@ -1,0 +1,455 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$background: #151d20;
+$content: #fce130;
+
+body {
+  background: $background;
+  color: $content;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+
+  header {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    > .left {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 15px 0 25px rgba(0, 0, 0, 0.7);
+
+      .top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50%;
+        width: 100%;
+
+        .out {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 150px;
+          width: 150px;
+          border-radius: 100%;
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .circular {
+          height: 100px;
+          width: 100px;
+          position: relative;
+          border-radius: 100%;
+
+          .inner {
+            position: absolute;
+            z-index: 6;
+            top: 50%;
+            left: 50%;
+            height: 80px;
+            width: 80px;
+            margin: -40px 0 0 -40px;
+            background-color: $background;
+            border-radius: 100%;
+            box-shadow: 0 1px 0 rgba(68, 65, 65, 0.2);
+          }
+
+          .circle {
+            z-index: 1;
+            .bar {
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              background: $background;
+              border-radius: 100%;
+              -webkit-border-radius: 100%;
+              clip: rect(0px, 100px, 100px, 50px);
+
+              .progress {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                border-radius: 100%;
+                -webkit-border-radius: 100%;
+                clip: rect(0px, 50px, 100px, 0px);
+                background: $content;
+                border: none;
+              }
+            }
+
+            .left .progress {
+              z-index: 1;
+              animation: left 1s linear both;
+            }
+            @keyframes left {
+              100% {
+                transform: rotate(180deg);
+              }
+            }
+
+            .right {
+              z-index: 3;
+              transform: rotate(180deg);
+
+              .progress {
+                animation: right 1s linear both;
+                animation-delay: 1s;
+              }
+
+              @keyframes right {
+                100% {
+                  transform: rotate(140deg);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .bottom {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 50%;
+        width: 100%;
+        /* border: 2px solid green; */
+
+        .ractangle {
+          width: 70%;
+          height: 90%;
+          border-top-left-radius: 100px;
+          border-top-right-radius: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          border: none;
+          box-shadow: -5px -5px 7px rgba(161, 158, 158, 0.3);
+          padding: 0 4em;
+          position: relative;
+
+          h3 {
+            font-size: 2em;
+            margin-bottom: 1em;
+          }
+
+          p {
+            text-align: center;
+            font-size: 1.3em;
+            color: white;
+          }
+        }
+      }
+    }
+
+    > .right {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10em;
+
+      h1 {
+        font-size: 3em;
+      }
+
+      .btns {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 2em;
+
+        button {
+          padding: 0.5em 3.3em;
+          color: $content;
+          font-size: 1.5em;
+          font-weight: bold;
+          background: $background;
+          border: none;
+          box-shadow: -5px -5px 10px rgba(161, 158, 158, 0.1),
+            5px 5px 10px rgba(0, 0, 0, 0.3);
+          cursor: pointer;
+          transition: all 0.5s;
+        }
+
+        button:hover {
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) inset,
+            -5px -5px 10px rgba(161, 158, 158, 0.1) inset;
+          /* border-radius: 5px; */
+          background: #262c2e;
+          color: white;
+        }
+      }
+    }
+  }
+
+  #Nocontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    display: none;
+    transition: 1s;
+    z-index: 10;
+
+    .cancelCard {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: white;
+      width: 650px;
+      height: 250px;
+      border-radius: 30px;
+      transform: translateY(-300%);
+      transition: transform 1s ease-in-out;
+
+      svg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        height: 70px;
+      }
+
+      h3 {
+        color: black;
+        font-size: 2.3em;
+      }
+
+      h4 {
+        color: black;
+        font-weight: 100;
+        font-size: 1.2rem;
+
+        span {
+          font-weight: bold;
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 667px) {
+  body {
+    overflow-x: hidden;
+    // height: 100vh;
+    width: 100vw;
+    header {
+      display: flex;
+      flex-direction: column;
+
+      > .left {
+        width: 100%;
+        height: 50%;
+        flex-direction: column;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+
+        .top {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50%;
+          width: 100%;
+
+          .out {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120px;
+            width: 120px;
+            border-radius: 100%;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+          }
+
+          .circular {
+            height: 80px;
+            width: 80px;
+            position: relative;
+            border-radius: 100%;
+
+            .inner {
+              position: absolute;
+              z-index: 6;
+              top: 50%;
+              left: 50%;
+              height: 60px;
+              width: 60px;
+              margin: -30px 0 0 -30px;
+              background-color: $background;
+              border-radius: 100%;
+              box-shadow: 0 1px 0 rgba(68, 65, 65, 0.2);
+            }
+
+            .circle {
+              z-index: 1;
+              .bar {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background: $background;
+                border-radius: 100%;
+                -webkit-border-radius: 100%;
+                clip: rect(0px, 100px, 100px, 40px);
+
+                .progress {
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  border-radius: 100%;
+                  -webkit-border-radius: 100%;
+                  clip: rect(0px, 40px, 100px, 0px);
+                  background: $content;
+                  border: none;
+                }
+              }
+
+              .left .progress {
+                z-index: 1;
+                animation: left 1s linear both;
+              }
+              @keyframes left {
+                100% {
+                  transform: rotate(180deg);
+                }
+              }
+
+              .right {
+                z-index: 3;
+                transform: rotate(180deg);
+
+                .progress {
+                  animation: right 1s linear both;
+                  animation-delay: 1s;
+                }
+
+                @keyframes right {
+                  100% {
+                    transform: rotate(140deg);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .bottom {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          height: 50%;
+          width: 100%;
+          //   overflow: hidden;
+
+          // border: 2px solid green;
+
+          .ractangle {
+            width: 70%;
+            height: 90%;
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            padding: 0 20px;
+
+            h3 {
+              font-size: 18px;
+              margin-bottom: 10px;
+            }
+
+            p {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+
+      > .right {
+        width: 100%;
+        height: 50%;
+        padding: 0 50px;
+        overflow: hidden;
+
+        h1 {
+          font-size: 30px;
+          text-align: center;
+        }
+
+        .btns {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+          margin-top: 20px;
+
+          button {
+            padding: 5px 30px;
+            color: $content;
+            font-size: 14px;
+            font-weight: bold;
+            background: $background;
+            border: none;
+            box-shadow: -5px -5px 10px rgba(161, 158, 158, 0.1),
+              5px 5px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.5s;
+          }
+
+          button:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) inset,
+              -5px -5px 10px rgba(161, 158, 158, 0.1) inset;
+            /* border-radius: 5px; */
+            background: #262c2e;
+            color: white;
+          }
+        }
+      }
+    }
+
+    #Nocontainer {
+      .cancelCard {
+        width: 330px;
+        height: 200px;
+        border-radius: 20px;
+
+        svg {
+          height: 40px;
+        }
+
+        h3 {
+          color: black;
+          font-size: 24px;
+        }
+
+        h4 {
+          color: black;
+          font-weight: 100;
+          font-size: 16px;
+
+          span {
+            font-weight: bold;
+            font-size: 1.1em;
+          }
+        }
+      }
+    }
+  }
+}
